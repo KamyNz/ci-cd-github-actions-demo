@@ -32,6 +32,6 @@ jobs:
 
       - name: plan
         run: |
-          echo $
+          echo $AWS_ACCES_KEY_ID
           terraform plan
 
