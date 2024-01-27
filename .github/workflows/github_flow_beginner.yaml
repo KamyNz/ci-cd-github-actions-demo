@@ -9,16 +9,16 @@ defaults:
   run:
     shell: bash
 
-# Manage of ENV variables as INPUTs
-env:
-  AWS_ACCES_KEY_ID: ${{secrets.AWS_ACCES_KEY_ID}}
-  AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-
-
+# Organizing steps
 jobs:
   deploy_tf_ec2:
     name: "deploy_tf_ec2 :rocket:"
     runs-on: "ubuntu-latest"
+
+    # Manage of ENV variables as INPUTs
+    env:
+      AWS_ACCES_KEY_ID: ${{ secrets.AWS_ACCES_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     steps:
       - name: checkout
