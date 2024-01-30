@@ -1,15 +1,13 @@
-resource "aws_s3_bucket" "terraform_state_cicd" {
-  bucket = "cloudcamp-terraform-state-cicd"
-}
+resource "aws_instance" "ccamp-github-actions" {
+  ami           = "ami-0c7217cdde317cfec" # Specify the AMI ID of the instance
+  instance_type = "t2.micro"              # Specify the instance type
 
-resource "aws_s3_bucket" "terraform_static_buckets"{
-  bucket = "cloudcamp-static-buckets"
-}
+  tags = {
+    Name     = "ccamp-github-actions"
+    Owner    = var.owner
+    OTU      = var.OTU
+    Class    = var.Class
+    bootcamp = var.bootcamp
 
-terraform {
-  backend "s3" {
-    bucket         = "cloudcamp-terraform-state-cicd"
-    key            = "prod-cloudcamp/terraform.tfstate"
-    region         = "us-east-1"
   }
 }
